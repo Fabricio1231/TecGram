@@ -17,7 +17,7 @@
         </form>
     </div>    
     <div class="md:w-1/2 px-10 bg-white p-5 rounded-lg shadow-lg ml-2">
-        <form action="{{route('cuenta.store')}}" method="POST">
+        <form action="{{route('muro.store')}}" method="POST">
             @csrf
             
             <div class="mb-5">
@@ -37,7 +37,16 @@
                     <p class="text-red-600 text-left">{{$message}}</p> 
                 @enderror
                 <input class="mb-4 border p-1 w-full rounded-lg @error('descripcion') border-red-700" @enderror type="text" id="descripcion" name="descripcion" value="{{old('descripcion')}}">
-    
+                
+            </div>
+
+            <div class="mb-5">
+                <input type="hidden" name="imagen" value="{{old('imagen')}}">
+                @error('imagen')
+                    <p class="text-red-700 my-2">
+                        {{$message}}
+                    </p>
+                @enderror
             </div>
 
             <input class="cursor-pointer hover:bg-sky-700 w-full rounded-lg bg-sky-600 text-white p-1 font-bold " type="submit" value="Publicar">
